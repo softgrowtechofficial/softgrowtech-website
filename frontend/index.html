@@ -64,6 +64,45 @@
       margin: 10px;
     }
 
+    /* Internship Section */
+    .internship {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .internship h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      width: 250px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin-bottom: 15px;
+      color: #cbd5f5;
+    }
   </style>
 </head>
 
@@ -71,4 +110,56 @@
 
   <!-- Navbar -->
   <div class="navbar">
-    <div
+    <div class="logo">SoftGrowTech</div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Internship</a>
+      <a href="#">Verify Certificate</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <a href="#" class="btn">Apply Now</a>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Build Your Tech Career with SoftGrowTech 🚀</h1>
+    <p>Internship-based training with real projects & verified certificates</p>
+
+    <div class="hero-buttons">
+      <a href="#" class="btn">Explore Internship</a>
+      <a href="#" class="btn">Verify Certificate</a>
+    </div>
+  </div>
+
+  <!-- Internship Section -->
+  <div class="internship">
+    <h2>Choose Your Internship Domain</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Web Development</h3>
+        <p>Learn HTML, CSS, JavaScript and build real projects</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+
+      <div class="card">
+        <h3>Data Science</h3>
+        <p>Learn Python, Data Analysis & Machine Learning basics</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+
+      <div class="card">
+        <h3>Machine Learning</h3>
+        <p>Build ML models and work on real-world datasets</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
