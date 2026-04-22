@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All India King 👑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #2a1b3d 50%, #1a0f2e 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Home Page */
+        .home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffd700"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><circle cx="20" cy="20" r="2" fill="url(%23a)"><animate attributeName="r" values="2;3;2" dur="3s" repeatCount="indefinite"/></circle><circle cx="80" cy="80" r="1.5" fill="url(%23a)"><animate attributeName="r" values="1.5;2.5;1.5" dur="4s" repeatCount="indefinite"/></circle></svg>'), linear-gradient(135deg, #0f0f23 0%, #2a1b3d 100%);
+        }
+
+        .logo {
+            font-size: 5rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ff6b35);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #ffd700); }
+            to { filter: drop-shadow(0 0 30px #ff6b35); }
+        }
+
+        .play-btn {
+            padding: 25px 60px;
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a0f2e;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Numbers Page */
+        .numbers-page {
+            padding: 50px 20px;
+            min-height: 100vh;
+            display: none;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 12px 25px;
+            border: 2px solid #ffd700;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #ffd700;
+            color: #1a0f2e;
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .number-box {
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border: 2px solid rgba(255,215,0,0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .number-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .number-box:hover::before {
+            left: 100%;
+        }
+
+        .number-box:hover {
+            transform: translateY(-15px) scale(1.1);
+            border-color: #ffd700;
+            background: linear-gradient(145deg, #ffd700, #ffed4e);
+            color: #1a0f2e;
+            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Payment Page */
+        .payment-page {
+            padding: 50px 20px;
+            min-height: 100vh;
+            display: none;
+            text-align: center;
+        }
+
+        .payment-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .selected-number {
+            font-size: 6rem;
+            background: linear-gradient(45deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 30px 0;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .amount {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .pay-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 24px;
+            margin-top: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 3.5rem; }
+            .play-btn { font-size: 22px; padding: 20px 40px; }
+            .numbers-grid { 
+                grid-template-columns: repeat(8, 1fr);
+                gap: 15px;
+            }
+            .number-box { font-size: 2rem; }
+            .title { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .numbers-grid { grid-template-columns: repeat(6, 1fr); }
+            .number-box { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div class="container home" id="homePage">
+        <div class="logo">👑 All India King 👑</div>
+        <p style="font-size: 1.8rem; margin-bottom: 40px; color: #ccc;">
+            अपना भाग्यशाली नंबर चुनें और जीतें लाखों रुपये!
+        </p>
+        <button class="play-btn" onclick="showNumbers()">▶ PLAY ▶</button>
+        <p style="margin-top: 40px; font-size: 1.3rem; color: #aaa;">
+            100 नंबर • तुरंत रिजल्ट • गारंटीड पेमेंट
+        </p>
+    </div>
+
+    <!-- Numbers Page -->
+    <div class="container numbers-page" id="numbersPage">
+        <button class="back-btn" onclick="showHome()">← होम पर वापस</button>
+        <h1 class="title">अपना नंबर चुनें (1-100)</h1>
+        <div class="numbers-grid" id="numbersGrid"></div>
+    </div>
+
+    <!-- Payment Page -->
+    <div class="container payment-page" id="paymentPage">
+        <button class="back-btn" onclick="showNumbers()">← नंबर चुनें</button>
+        <div class="payment-card">
+            <div class="selected-number" id="selectedNumDisplay">45</div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">पेमेंट करें</h2>
+            <div class="amount">केवल ₹99</div>
+            <p style="margin: 20px 0; color: #ccc; font-size: 1.2rem;">
+                सुरक्षित भुगतान • तुरंत एक्टिवेशन
+            </p>
+            <button class="pay-btn play-btn" onclick="completePayment()">
+                💰 अभी पेमेंट करें
+            </button>
+            <div style="margin-top: 20px; font-size: 1.1rem; color: #aaa;">
+                UPI / Card / Wallet सभी स्वीकार्य
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedNumber = null;
+
+        function showNumbers() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('numbersPage').style.display = 'block';
+            createNumbers();
+        }
+
+        function showHome() {
+            document.getElementById('numbersPage').style.display = 'none';
+            document.getElementById('homePage').style.display = 'flex';
+        }
+
+        function showPayment(num) {
+            selectedNumber = num;
+            document.getElementById('numbersPage').style.display = 'none';
+            document.getElementById('paymentPage').style.display = 'block';
+            document.getElementById('selectedNumDisplay').textContent = num;
+        }
+
+        function showNumbersPage() {
+            document.getElementById('paymentPage').style.display = 'none';
+            document.getElementById('numbersPage').style.display = 'block';
+        }
+
+        function createNumbers() {
+            const grid = document.getElementById('numbersGrid');
+            grid.innerHTML = '';
+
+            for (let i = 1; i <= 100; i++) {
+                const numberBox = document.createElement('div');
+                numberBox.className = 'number-box';
+                numberBox.textContent = i;
+                numberBox.onclick = () => showPayment(i);
+                grid.appendChild(numberBox);
+            }
+        }
+
+        function completePayment() {
+            // Payment success animation
+            const btn = document.querySelector('.pay-btn');
+            btn.textContent = '✅ भुगतान सफल!';
+            btn.style.background = 'linear-gradient(45deg, #00ff88, #00cc66)';
+            
+            setTimeout(() => {
+                alert(`🎉 बधाई हो!\n\nनंबर ${selectedNumber} सक्रिय हो गया!\n24 घंटे में रिजल्ट आएगा।\n\nधन्यवाद - All India King`);
+                showHome();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
